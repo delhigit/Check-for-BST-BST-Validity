@@ -1,0 +1,23 @@
+bool checkBST(Node* root, Node* lCheck, Node* rCheck)
+{
+    if(root == NULL)
+    return true;
+    
+    if(lCheck && root -> data < lCheck -> data)
+    return false;
+    
+    if(rCheck && root -> data > rCheck -> data)
+    return false;
+    
+    if( checkBST(root -> left, lCheck, root) )
+    return checkBST(root -> right, root, rCheck);
+    
+    else false;
+}
+   
+bool isBST(Node* root)
+{
+    Node* l = NULL;
+    Node* r = NULL;
+    return checkBST(root, l, r);
+}
